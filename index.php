@@ -13,7 +13,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Link -->
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./USER/CSS/style.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <!-- ******************************************** || Navbar Starts Here || *********************************************** -->
         <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
-                <img class="logo" src="./Images/Logo.png" alt="Logo">
+                <img class="logo" src="./USER/Images/Logo.png" alt="Logo">
                 <a class="navbar-brand" href="#">Shoppers Bay</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
