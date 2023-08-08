@@ -23,8 +23,8 @@
                 <div class="container-fluid">
                     <!-- ******************************************** || Navbar 1 Starts Here || *********************************************** -->
                     <div class="logo_item d-flex align-items-center">
-                        <a href="#" class="nav-item"><img src="../USER/Images/Logo.png" class="logo" alt="Logo"></a>
-                        <a class="navbar-brand fs-5" href="#">Shoppers Bay</a>
+                        <a href="./" class="nav-item"><img src="../USER/Images/Logo.png" class="logo" alt="Logo"></a>
+                        <a class="navbar-brand fs-5" href="./">Shoppers Bay</a>
                     </div>
                     <!-- ******************************************** || Navbar 1 Ends Here || *********************************************** -->
 
@@ -58,9 +58,10 @@
                 <div class="control_buttons d-flex justify-content-center mt-4 gap-2 flex-wrap">
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">Insert Products</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Products</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">Insert Categories</a></button>
+                    <!-- After ? -> insert_category is the GET Variable -->
+                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./index.php?insert_category">Insert Categories</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Categories</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">Insert Brands</a></button>
+                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./index.php?insert_brand">Insert Brands</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Brands</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">All Orders</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">All Payments</a></button>
@@ -72,6 +73,28 @@
         </div>
     </section>
     <!-- ******************************************** || Admin Control Buttons Section Ends Here || *********************************************** -->
+
+    <!-- ******************************************** || Main Starts Here || *********************************************** -->
+    <main>
+        <!-- ******************************************** || display on button click Starts Here || *********************************************** -->
+        <section class="display">
+            <div class="container_to_display mt-4 px-5">
+                <!-- PHP Code -->
+                <?php 
+                    // If the GET Variable => insert_category is set in the URL then we will include the content of insert_categories.php in the current div.
+                    if(isset($_GET['insert_category'])) {
+                        include('./PHP/insert_categories.php');
+                    }
+                    else if(isset($_GET['insert_brand'])) {
+                        include('./PHP/insert_brands.php');
+                    }
+                ?>
+                <!-- PHP Code -->
+            </div>
+        </section>
+        <!-- ******************************************** || display on button click Ends Here || *********************************************** -->
+    </main>
+    <!-- ******************************************** || Main Ends Here || *********************************************** -->
 
     <!-- ******************************************** || Footer Starts Here || *********************************************** -->
     <!-- <div class="footer container-fluid bg-primary text-center">
