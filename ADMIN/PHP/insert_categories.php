@@ -1,11 +1,39 @@
-<!-- Including connect.php to connect to Database -->
+<!-- PHP Code -->
 <?php
-
+    // Including connect.php to connect to Database 
     include('.././includes/connect.php');
 
-?>
+    // If the insert_category is set in the URL i.e button with name="insert_category" is clicked then this block is executed.
+    if(isset($_POST['insert_category'])) {
+        // Accessing the title using name attribute
+        $category_title = $_POST['category_title'];
 
-<form action="POST" class="mb-2">
+        // Query to get all the category titles from table categories which is equal to $category_title.
+        $query_to_get_category_titles = "select * from `categories` where category_title = '$category_title'";
+        
+        // Getting result of above query.
+        $query_result = mysqli_query($con, $query_to_get_category_titles);
+
+        // Getting total number of rows
+        $row_number = mysqli_num_rows($query_result);
+
+        // If number of rows is greater than 0 it means there is already data which has category_title equal to the current $category_title we are trying to insert in categories table.
+        if($row_number > 0) {
+            // Displaying message that the category is already present.
+            echo "<script>alert('Category $category_title is already Present.')</script>";
+        }
+        else {
+            $insert_query = "insert into `categories` (category_title) values ('$category_title')";
+            $result = mysqli_query($con, $insert_query);
+            if($result) {
+                echo "<script>alert('Category $category_title has been inserted Successfully.')</script>";
+            }
+        }
+    }
+?>
+<!-- PHP Code -->
+
+<form method="post" action="" class="mb-2">
     <!-- ******************************************** || Input Field Starts Here || *********************************************** -->
     <div class="input-group mb-2">
         <span class="input-group-text bg-primary text-light border border-primary" id="addon-wrapping"><i class="fa-solid fa-receipt"></i></span>
@@ -15,8 +43,7 @@
 
     <!-- ******************************************** || Insert Button Starts Here || *********************************************** -->
     <div class="input-group mb-2">
-        <!-- <input type="submit" class="form-control bg-info" name="insert_category_button" value="Insert Category" aria-describedby="basic-addon1"> -->
-        <button class="bg-primary p-2 border-0 text-light my-2">Insert Category</button>
+        <input type="submit" class="bg-primary border-0 p-2 my-2" name="insert_category" value="Insert Category" aria-describedby="basic-addon1">
     </div>
     <!-- ******************************************** || Insert Button Ends Here || *********************************************** -->
 
