@@ -1,3 +1,10 @@
+<!-- Including connect.php to connect to Database -->
+<?php
+
+    include('.././includes/connect.php');
+
+?>
+
 <form action="POST" class="mb-2">
     <!-- ******************************************** || Input Field Starts Here || *********************************************** -->
     <div class="input-group mb-2">
