@@ -1,3 +1,8 @@
+<?php
+    // Including connect.php to connect to Database 
+    include('./includes/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -223,21 +228,33 @@
                         <li class="nav-item bg-info">
                             <a class="nav-link text-light fs-4" href="#">Delivery Brands</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Brand 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Brand 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Brand 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Brand 4</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Brand 5</a>
-                        </li>
+
+                        <!-- PHP Code -->
+                        <?php
+                            // Query to get data from brands table
+                            $select_brands_query = "Select * from `brands`";
+
+                            // Result of the above query => it contains both the columns of the brands table.
+                            $query_result = mysqli_query($con, $select_brands_query);
+
+                            // Here mysqli_fetch_assoc($query_result) gives the value of next row starting from row number 2.
+                            // Here mysqli_fetch_assoc($query_result) will return row value till it reaches last row of table and then it will have null value and will terminate the loop. 
+                            while($result_data = mysqli_fetch_assoc($query_result)) {
+                                // Accessing the brand title from $result_data which contains row value.
+                                $brand_title = $result_data['brand_title'];
+
+                                // Accessing the brand id from $result_data which contains row value.
+                                $brand_id = $result_data['brand_id'];
+                                
+                                // Inserting into the DOM the brand title.
+                                echo "
+                                    <li class='nav-item'>
+                                        <a class='nav-link text-light fs-5' href='index.php?brand=$brand_id'>$brand_title</a>
+                                    </li>
+                                ";
+                            }
+                        ?>
+                        <!-- PHP Code -->
                     </ul>
                     <!-- ******************************************** || Brands Ends Here || *********************************************** -->
 
@@ -246,21 +263,33 @@
                         <li class="nav-item bg-info">
                             <a class="nav-link text-light fs-4" href="#">Category</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Category 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Category 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Category 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Category 4</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" href="#">Category 5</a>
-                        </li>
+                        
+                        <!-- PHP Code -->
+                        <?php
+                            // Query to get data from categories table
+                            $select_categories_query = "select * from `categories`";
+
+                            // Result of the above query => it contains both the columns of the categories table.
+                            $query_result = mysqli_query($con, $select_categories_query);
+
+                            // Here mysqli_fetch_assoc($query_result) gives the value of next row starting from row number 2.
+                            // Here mysqli_fetch_assoc($query_result) will return row value till it reaches last row of table and then it will have null value and will terminate the loop. 
+                            while($result_data = mysqli_fetch_assoc($query_result)) {
+                                // Accessing the category title from $result_data which contains row value.
+                                $category_title = $result_data['category_title'];
+
+                                // Accessing the category id from $result_data which contains row value.
+                                $category_id = $result_data['category_id'];
+
+                                // Inserting into the DOM the category title.
+                                echo "
+                                    <li class='nav-item'>
+                                        <a class='nav-link text-light fs-5' href='?category=$category_id'>$category_title</a>
+                                    </li>
+                                ";
+                            }
+                        ?>
+                        <!-- PHP Code -->
                     </ul>
                     <!-- ******************************************** || Category Ends Here || *********************************************** -->
                 </div>
