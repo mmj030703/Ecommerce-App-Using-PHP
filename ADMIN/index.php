@@ -56,7 +56,7 @@
             <!-- ******************************************** || Admin Control Buttons Starts Here || *********************************************** -->
             <div class="control_buttons_row container-fluid">
                 <div class="control_buttons d-flex justify-content-center mt-4 gap-2 flex-wrap">
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">Insert Products</a></button>
+                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./PHP/insert_product.php">Insert Products</a></button>
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Products</a></button>
                     <!-- After ? -> insert_category is the GET Variable -->
                     <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./index.php?insert_category">Insert Categories</a></button>
