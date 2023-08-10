@@ -6,7 +6,7 @@
     // If the insert_brand is set in the URL i.e button with name="insert_brand" is clicked then this block is executed.
     if(isset($_POST['insert_brand'])) {
         // Accessing the title using name attribute
-        $brand_title = $_POST['brand_title'];
+        $brand_title = trim($_POST['brand_title']);
 
         // Query to get all the brand titles from table brands which is equal to $brand_title.
         $query_to_get_brand_titles = "select * from `brands` where brand_title = '$brand_title'";
@@ -22,6 +22,9 @@
             // Displaying message that the brand is already present.
             echo "<script>alert('Brand $brand_title is already Present.')</script>";
         }
+        else if($brand_title == "") {
+            echo "<script>alert('Input Field is Empty.')</script>";
+        }
         else {
             $query_to_add_brand_title = "insert into `brands` (brand_title) values ('$brand_title')";
             $result = mysqli_query($con, $query_to_add_brand_title);
@@ -34,7 +37,8 @@
 ?>
 <!-- PHP Code -->
 
-<form method="POST" action="" class="mb-2">
+<h2 class="text-center mb-3">Insert Brands</h2>
+<form method="POST" action="">
     <!-- ******************************************** || Input Field Starts Here || *********************************************** -->
     <div class="input-group mb-2">
         <span class="input-group-text bg-primary text-light border border-primary" id="addon-wrapping"><i class="fa-solid fa-receipt"></i></span>
