@@ -78,7 +78,7 @@
     <main>
         <!-- ******************************************** || display on button click Starts Here || *********************************************** -->
         <section class="display">
-            <div class="container_to_display mt-4 px-5">
+            <div class="container_to_display mt-3 px-5">
                 <!-- PHP Code -->
                 <?php 
                     // If the GET Variable => insert_category is set in the URL then we will include the content of insert_categories.php in the current div.
