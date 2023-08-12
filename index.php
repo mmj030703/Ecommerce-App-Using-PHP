@@ -100,7 +100,7 @@
                         
                         <!-- PHP Code -->
                         <?php
-                            $query_to_select_all_products = "select * from `products` LIMIT 0,6";
+                            $query_to_select_all_products = "select * from `products` order by rand() LIMIT 0,6";
                             $query_result = mysqli_query($con, $query_to_select_all_products);
 
                             while($table_row = mysqli_fetch_assoc($query_result)) {
