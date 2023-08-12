@@ -47,7 +47,7 @@
                             <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"><sup>1</sup></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Total Price : 100/-</a>
+                            <a class="nav-link" href="#">Total Price : &#8377; 100</a>
                         </li>
                     </ul>
 
@@ -95,127 +95,41 @@
             <div class="product_section_container row">
                 <!-- ******************************************** || Products Container Starts Here || *********************************************** -->
                 <div class="products_container col-md-10">
-                    <div class="products_row row">
+                    <div class="products_row row mx-1">
                         <!-- Product 1 -->
-                        <div class="product_1 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/61VNtSQCi8L._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 2 -->
-                        <div class="product_2 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/81LO0QPqZAL._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 3 -->
-                        <div class="product_3 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/81YEyQqHjPL._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 4 -->
-                        <div class="product_4 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/41o-KkXEkSL.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 5 -->
-                        <div class="product_5 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/518kb55qKdL._UL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 6 -->
-                        <div class="product_6 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/71u-UfyEy3L._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 7 -->
-                        <div class="product_7 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/61mKIt8BtYL._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 8 -->
-                        <div class="product_8 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/61EXU8BuGZL._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 9 -->
-                        <div class="product_9 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/61id5NxI2aS._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product 10 -->
-                        <div class="product_10 col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://m.media-amazon.com/images/I/61v0-iGlR1L._SL1500_.jpg" class="card-img-top" alt="">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Add to Cart</a>
-                                  <a href="#" class="btn btn-dark">View More</a>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        <!-- PHP Code -->
+                        <?php
+                            $query_to_select_all_products = "select * from `products` LIMIT 0,6";
+                            $query_result = mysqli_query($con, $query_to_select_all_products);
+
+                            while($table_row = mysqli_fetch_assoc($query_result)) {
+                                $product_title = $table_row['product_title'];
+                                $product_description = $table_row['product_description'];
+                                $category_id = $table_row['category_id'];
+                                $brand_id = $table_row['brand_id'];
+                                $product_image = $table_row['product_image1'];
+                                $product_price = $table_row['product_price'];
+
+                                echo "
+                                    <div class='product_1 col-md-4 mb-4'>
+                                        <div class='card h-100'>
+                                            <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
+                                            <div class='card-body d-flex flex-column'> 
+                                                <h5 class='card-title mt-2'>$product_title</h5>
+                                                <p class='card-text mb-auto'>$product_description</p>
+                                                <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
+                                                <div class='buttons mt-2'>
+                                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ";
+                            }
+                        ?>
+                        <!-- PHP Code -->
                     </div>
                 </div>
                 <!-- ******************************************** || Products Container Ends Here || *********************************************** -->
@@ -302,7 +216,7 @@
 
     <!-- ******************************************** || Footer Starts Here || *********************************************** -->
     <div class="footer container-fluid bg-primary text-center">
-        <h4 class="text-black mt-2">All Rights Reserved &copy; Shoppers Bay.</h4>
+        <h4 class="text-black pt-2">All Rights Reserved &copy; Shoppers Bay.</h4>
         <p class="fs-5 m-2">Made by Mayank M Jain ♥</p>
     </div>
     <!-- ******************************************** || Footer Ends Here || *********************************************** -->
