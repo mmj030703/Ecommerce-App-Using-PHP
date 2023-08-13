@@ -21,3 +21,7 @@
     height: 200px;
     object-fit: contain;
 }
+
+.products_not_available {
+    margin: 1rem 0rem 0rem 7rem;
+}
