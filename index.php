@@ -105,6 +105,7 @@
                         <?php
                             // Function to get all the products from database and insert in the DOM. 
                             getAllProducts();
+                            getUniqueProducts();
                         ?>
                         <!-- PHP Code -->
                     </div>
