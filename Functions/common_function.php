@@ -214,4 +214,47 @@
             ";
         }
     } 
+
+    function search_product() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        if(isset($_GET['search_data_product'])) {
+            $search_data = $_GET['search_data'];
+            $search_query = "select * from `products` where product_keywords like '%$search_data%'";
+            $query_result = mysqli_query($con, $search_query);
+            $number_of_rows = mysqli_num_rows($query_result);
+
+            // If number of rows == 0 which means there are no products available of that brand
+            if($number_of_rows == 0) {
+                echo "<h2 class='products_not_available text-center text-danger'>Sorry! No Result Found.</h2>";
+            }
+
+            while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_title = $table_row['product_title'];
+                $product_description = $table_row['product_description'];
+                $category_id = $table_row['category_id'];
+                $brand_id = $table_row['brand_id'];
+                $product_image = $table_row['product_image1'];
+                $product_price = $table_row['product_price'];
+
+                echo "
+                    <div class='product_1 col-md-4 mb-4'>
+                        <div class='card h-100'>
+                            <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
+                            <div class='card-body d-flex flex-column'> 
+                                <h5 class='card-title mt-2'>$product_title</h5>
+                                <p class='card-text mb-auto'>$product_description</p>
+                                <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
+                                <div class='buttons mt-2'>
+                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ";
+            }
+        }
+    }
 ?>
