@@ -2,13 +2,50 @@
     // Including connect.php in includes folder to access the connection variable $con.
     include('./includes/connect.php');
 
+    function getProducts() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        // If any brand and category is not clicked then all the products are shown. 
+        if(!isset($_GET['brand']) and !isset($_GET['category'])) {
+            $query_to_select_all_products = "select * from `products` order by rand() LIMIT 0,9";
+            $query_result = mysqli_query($con, $query_to_select_all_products);
+
+            while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_title = $table_row['product_title'];
+                $product_description = $table_row['product_description'];
+                $category_id = $table_row['category_id'];
+                $brand_id = $table_row['brand_id'];
+                $product_image = $table_row['product_image1'];
+                $product_price = $table_row['product_price'];
+
+                echo "
+                    <div class='product_1 col-md-4 mb-4'>
+                        <div class='card h-100'>
+                            <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
+                            <div class='card-body d-flex flex-column'> 
+                                <h5 class='card-title mt-2'>$product_title</h5>
+                                <p class='card-text mb-auto'>$product_description</p>
+                                <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
+                                <div class='buttons mt-2'>
+                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ";
+            }
+        }
+    }
+
     function getAllProducts() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
 
         // If any brand and category is not clicked then all the products are shown. 
         if(!isset($_GET['brand']) and !isset($_GET['category'])) {
-            $query_to_select_all_products = "select * from `products` order by rand() LIMIT 0,6";
+            $query_to_select_all_products = "select * from `products` order by rand()";
             $query_result = mysqli_query($con, $query_to_select_all_products);
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
