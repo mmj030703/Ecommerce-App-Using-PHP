@@ -55,9 +55,9 @@
                     </ul>
 
         <!-- ******************************************** || Search Starts Here || *********************************************** -->
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search Products..." aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    <form action="search_product.php" method="GET" class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" name="search_data" placeholder="Search Products..." aria-label="Search">
+                        <input type="submit" class="btn btn-outline-light" value="Search" name="search_data_product"></input>
                     </form>
                 </div>
             </div>
