@@ -12,6 +12,7 @@
             $query_result = mysqli_query($con, $query_to_select_all_products);
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
                 $product_title = $table_row['product_title'];
                 $product_description = $table_row['product_description'];
                 $category_id = $table_row['category_id'];
@@ -29,7 +30,7 @@
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
                                     <a href='#' class='btn btn-primary'>Add to Cart</a>
-                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                    <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +50,7 @@
             $query_result = mysqli_query($con, $query_to_select_all_products);
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
                 $product_title = $table_row['product_title'];
                 $product_description = $table_row['product_description'];
                 $category_id = $table_row['category_id'];
@@ -66,7 +68,7 @@
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
                                     <a href='#' class='btn btn-primary'>Add to Cart</a>
-                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                    <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
                         </div>
@@ -93,6 +95,7 @@
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
                 $product_title = $table_row['product_title'];
                 $product_description = $table_row['product_description'];
                 $category_id = $table_row['category_id'];
@@ -110,7 +113,7 @@
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
                                     <a href='#' class='btn btn-primary'>Add to Cart</a>
-                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                    <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
                         </div>
@@ -132,6 +135,7 @@
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
                 $product_title = $table_row['product_title'];
                 $product_description = $table_row['product_description'];
                 $category_id = $table_row['category_id'];
@@ -149,7 +153,7 @@
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
                                     <a href='#' class='btn btn-primary'>Add to Cart</a>
-                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                    <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
                         </div>
@@ -231,6 +235,7 @@
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
                 $product_title = $table_row['product_title'];
                 $product_description = $table_row['product_description'];
                 $category_id = $table_row['category_id'];
@@ -248,10 +253,70 @@
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
                                     <a href='#' class='btn btn-primary'>Add to Cart</a>
-                                    <a href='#' class='btn btn-dark px-3'>View More</a>
+                                    <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                ";
+            }
+        }
+    }
+    
+    function viewMore() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        // If any brand and category is not clicked then all the products are shown. 
+        if(isset($_GET['product_id'])) {
+            $product_id = $_GET['product_id'];
+            $query_to_select_all_products = "select * from `products` where product_id = $product_id";
+            $query_result = mysqli_query($con, $query_to_select_all_products);
+
+            while($table_row = mysqli_fetch_assoc($query_result)) {
+                $product_id = $table_row['product_id'];
+                $product_title = $table_row['product_title'];
+                $product_description = $table_row['product_description'];
+                $category_id = $table_row['category_id'];
+                $brand_id = $table_row['brand_id'];
+                $product_image1 = $table_row['product_image1'];
+                $product_image2 = $table_row['product_image2'];
+                $product_image3 = $table_row['product_image3'];
+                $product_price = $table_row['product_price'];
+
+                echo "
+                    <div class='product_carousel m-auto'>
+                        <div id='carouselExample' class='carousel slide'>
+                            <button class='carousel-control-prev prev' type='button' data-bs-target='#carouselExample' data-bs-slide='prev'>
+                                <span class='carousel-control-prev-icon product_prev_btn' aria-hidden='true'></span>
+                                <span class='visually-hidden'>Previous</span>
+                            </button>
+                            <div class='carousel-inner'>
+                                <div class='carousel-item active'>
+                                    <img src='./ADMIN/Images/$product_image1' class='carousel_image d-block w-100' alt='$product_title'>
+                                </div>
+                                <div class='carousel-item'>
+                                    <img src='./ADMIN/Images/$product_image2' class='carousel_image d-block w-100' alt='$product_title'>
+                                </div>
+                                <div class='carousel-item'>
+                                    <img src='./ADMIN/Images/$product_image3' class='carousel_image d-block w-100' alt='$product_title'>
+                                </div>
+                            </div>
+                            <button class='carousel-control-next next' type='button' data-bs-target='#carouselExample' data-bs-slide='next'>
+                                <span class='carousel-control-next-icon product_next_btn' aria-hidden='true'></span>
+                                <span class='visually-hidden'>Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class='product_details d-flex flex-column align-items-center mt-2 mb-4 text-center'>
+                        <h2 class='my-4 fs-1'>$product_title</h2>
+                        <p class='mt-4 mb-2 fs-4'>About this product</p>
+                        <p class='product_description fs-5 w-75 mb-4'>$product_description</p>
+                        <p class='fs-3'>Price:  &#8377; $product_price</p>
+                    </div>
+                    <div class='buttons mt-2 d-flex justify-content-center column-gap-5 my-4'>
+                        <a href='#' class='btn btn-primary fs-5'>Add to Cart</a>
+                        <a href='./display_all_products.php' class='btn btn-dark px-3 fs-5'>Continue Shopping</a>
                     </div>
                 ";
             }
