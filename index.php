@@ -65,6 +65,12 @@
         </nav>
         <!-- ******************************************** || Navbar Ends Here || *********************************************** -->
     </header>
+
+    <!-- PHP Code -->
+    <?php
+        cart();
+    ?>
+    <!-- PHP Code -->
     <!-- ******************************************** || Header Ends Here || *********************************************** -->
 
     <!-- ******************************************** || Welcome Starts Here || *********************************************** -->
@@ -105,7 +111,12 @@
                         <?php
                             // Function to get all the products from database and insert in the DOM. 
                             getProducts();
+
+                            // Function to get specific brand or category products from database and insert in the DOM. 
                             getUniqueProducts();
+
+                            // Function to get the IP Address of the User. 
+                            getIPAddress();
                         ?>
                         <!-- PHP Code -->
                     </div>
