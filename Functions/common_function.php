@@ -2,6 +2,7 @@
     // Including connect.php in includes folder to access the connection variable $con.
     include('./includes/connect.php');
 
+    // Function for getting limited products from database 
     function getProducts() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -29,7 +30,7 @@
                                 <p class='card-text mb-auto'>$product_description</p>
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
-                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
                                     <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
@@ -40,6 +41,7 @@
         }
     }
 
+    // Function for getting all the products from database 
     function getAllProducts() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -67,7 +69,7 @@
                                 <p class='card-text mb-auto'>$product_description</p>
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
-                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
                                     <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
@@ -78,6 +80,7 @@
         }
     }
 
+    // Function for getting specific brand or category products from database 
     function getUniqueProducts() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -112,7 +115,7 @@
                                 <p class='card-text mb-auto'>$product_description</p>
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
-                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
                                     <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
@@ -152,7 +155,7 @@
                                 <p class='card-text mb-auto'>$product_description</p>
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
-                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
                                     <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
@@ -163,6 +166,7 @@
         }
     }
 
+    // Function for getting all the brands from database 
     function getAllBrands() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -191,6 +195,7 @@
         }
     } 
 
+    // Function for getting all the categories from database 
     function getAllCategories() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -219,6 +224,7 @@
         }
     } 
 
+    // Function for getting all the products from database that matches the searched query 
     function search_product() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -252,7 +258,7 @@
                                 <p class='card-text mb-auto'>$product_description</p>
                                 <p class='card-text mt-3 fw-bold'>&#8377; $product_price</p>
                                 <div class='buttons mt-2'>
-                                    <a href='#' class='btn btn-primary'>Add to Cart</a>
+                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
                                     <a href='product_details.php?product_id=${product_id}' class='btn btn-dark px-3'>View More</a>
                                 </div>
                             </div>
@@ -263,6 +269,7 @@
         }
     }
     
+    // Function for getting the product from database for which the user has clicked on view more button 
     function viewMore() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -315,11 +322,69 @@
                         <p class='fs-3'>Price:  &#8377; $product_price</p>
                     </div>
                     <div class='buttons mt-2 d-flex justify-content-center column-gap-5 my-4'>
-                        <a href='#' class='btn btn-primary fs-5'>Add to Cart</a>
+                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary fs-5'>Add to Cart</a>
                         <a href='./display_all_products.php' class='btn btn-dark px-3 fs-5'>Continue Shopping</a>
                     </div>
                 ";
             }
         }
     }
+
+    // Function to store Cart details in Database
+    function cart() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        // If Add to Cart button is clicked then this block is executed. 
+        if(isset($_GET['add_to_cart'])) {
+            $product_id = $_GET['add_to_cart'];
+            $ip_address = getIPAddress();
+            $quantity = 0;
+
+            $select_query = "select * from `cart_details` where ip_address = '$ip_address' and product_id = $product_id";
+            $select_query_result = mysqli_query($con, $select_query);
+            $number_of_rows = mysqli_fetch_assoc($select_query_result);
+
+            if($number_of_rows > 0) {
+                echo "
+                    <script>
+                        alert('Product already Added in the Cart!');
+                    </script>
+                ";
+            }
+            else {
+                $insert_query = "insert into `cart_details` (product_id, ip_address, quantity) values ($product_id, '$ip_address', $quantity)";
+                $insert_query_result = mysqli_query($con, $insert_query);
+                if($insert_query_result) {
+                    echo "
+                        <script>
+                            alert('Product added Successfully in the Cart.');
+                        </script>
+                    ";
+                }
+            }
+            echo "
+                <script>
+                    window.open('index.php', '_self');
+                </script>
+            ";
+        }
+    }
+
+    // Function to get the IP address of the User. 
+    function getIPAddress() {  
+        //whether ip is from the share internet  
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+            $ip = $_SERVER['HTTP_CLIENT_IP'];  
+        }  
+        //whether ip is from the proxy  
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+        }  
+        //whether ip is from the remote address  
+        else{  
+            $ip = $_SERVER['REMOTE_ADDR'];  
+        }  
+        return $ip;  
+    }  
 ?>
