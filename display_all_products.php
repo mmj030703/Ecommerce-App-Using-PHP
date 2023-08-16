@@ -54,17 +54,23 @@
                         </li>
                     </ul>
 
-        <!-- ******************************************** || Search Starts Here || *********************************************** -->
+                    <!-- ******************************************** || Search Starts Here || *********************************************** -->
                     <form action="search_product.php" method="GET" class="d-flex" role="search">
                         <input class="form-control me-2" type="search" name="search_data" placeholder="Search Products..." aria-label="Search">
                         <input type="submit" class="btn btn-outline-light" value="Search" name="search_data_product"></input>
                     </form>
+                    <!-- ******************************************** || Search Ends Here || *********************************************** -->
                 </div>
             </div>
-        <!-- ******************************************** || Search Ends Here || *********************************************** -->
         </nav>
         <!-- ******************************************** || Navbar Ends Here || *********************************************** -->
     </header>
+    
+    <!-- PHP Code -->
+    <?php
+        cart();
+    ?>
+    <!-- PHP Code -->
     <!-- ******************************************** || Header Ends Here || *********************************************** -->
 
     <!-- ******************************************** || Welcome Starts Here || *********************************************** -->
@@ -105,7 +111,12 @@
                         <?php
                             // Function to get all the products from database and insert in the DOM. 
                             getAllProducts();
+
+                            // Function to get specific brand or category products from database and insert in the DOM. 
                             getUniqueProducts();
+
+                            // Function to get the IP Address of the User. 
+                            getIPAddress();
                         ?>
                         <!-- PHP Code -->
                     </div>
