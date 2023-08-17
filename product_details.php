@@ -47,7 +47,18 @@
                             <a class="nav-link" href="#">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"><sup>1</sup></i></a>
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-cart-shopping">
+                                    <sup>
+                                        <!-- PHP Code -->
+                                        <?php 
+                                            // Function to get number of items in cart from database
+                                            getNumberOfCartItems(); 
+                                        ?>
+                                        <!-- PHP Code -->
+                                    </sup>
+                                </i>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Total Price : &#8377; 100</a>
