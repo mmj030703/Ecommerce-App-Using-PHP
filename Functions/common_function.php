@@ -371,6 +371,20 @@
         }
     }
 
+    // Function to get number of Items in the Cart from Database
+    function getNumberOfCartItems() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        $ip_address = getIPAddress();
+
+        $select_query = "select * from `cart_details` where ip_address = '$ip_address'";
+        $select_query_result = mysqli_query($con, $select_query);
+        $number_of_cart_items = mysqli_num_rows($select_query_result);
+        
+        echo $number_of_cart_items;
+    }
+
     // Function to get the IP address of the User. 
     function getIPAddress() {  
         //whether ip is from the share internet  
