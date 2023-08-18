@@ -401,4 +401,27 @@
         }  
         return $ip;  
     }  
+
+    // Function to get the price of all the items and calculate the total price
+    function getTotalCartPrice() {
+        // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
+        global $con;
+
+        $ip_address = getIPAddress();
+        $total_price = 0;
+
+        $select_query = "select * from `cart_details` where ip_address = '$ip_address'";
+        $select_query_result = mysqli_query($con, $select_query);
+
+        while($table_row = mysqli_fetch_array($select_query_result)) {
+            $product_id = $table_row['product_id'];
+            $product_query = "select * from `products` where product_id = '$product_id'";
+            $product_query_result = mysqli_query($con, $product_query);
+
+            $table_row = mysqli_fetch_assoc($product_query_result);
+            $product_price = $table_row['product_price'];
+            $total_price += $product_price;
+        }
+        echo $total_price;
+    }
 ?>
