@@ -61,7 +61,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Total Price : &#8377; 100</a>
+                            <a class="nav-link" href="#">
+                                Total Price : &#8377; 
+                                <!-- PHP Code -->
+                                <?php
+                                    // Function to get total price of items in cart from database
+                                    getTotalCartPrice();
+                                ?>
+                                <!-- PHP Code -->
+                            </a>
                         </li>
                     </ul>
 
