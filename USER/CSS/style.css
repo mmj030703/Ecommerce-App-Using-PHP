@@ -59,3 +59,40 @@
 .product_next_btn:hover {
     cursor: pointer;
 }
+
+.cart_img {
+    width: max-content;
+    height: 200px;
+    object-fit: contain;
+}
+
+.cart_section .cart .cart_summary .cart_summary_heading {
+    position: relative;
+    padding-bottom: .4rem;
+}
+
+.cart_summary .cart_summary_heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 28%;
+    height: 5px;
+    background-color: #fff;
+}
+
+.cart_summary .checkout_buttons {
+    position: relative;
+}
+
+.cart_summary .checkout_buttons .paytm_btn {
+    text-align: left;
+    padding-left: 7.5rem;
+}
+
+.cart_summary .checkout_buttons .paytm_btn .paytm_logo_svg {
+    position: absolute;
+    bottom: -19px;
+    height: 80px;
+    width: 80px;
+} 
