@@ -47,7 +47,7 @@
                             <a class="nav-link" href="#">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="cart.php">
                                 <i class="fa-solid fa-cart-shopping">
                                     <sup>
                                         <!-- PHP Code -->
