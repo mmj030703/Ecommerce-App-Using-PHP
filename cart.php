@@ -86,42 +86,44 @@
     <main>
         <!-- ******************************************** || Cart Section Starts Here || *********************************************** -->
         <section class="cart_section mt-4 px-5 pb-3">
-            <div class="cart row">
-                <!-- ******************************************** || Cart Details Starts Here || ******************************************** -->
-                <div class="cart_details col-md-8"> 
-                    <div class="cart_table">
-                        <h2 class="fs-2 bg-dark text-light py-2 px-3">
-                            Your Cart (
-                                <!-- PHP Code -->
-                                <?php 
-                                    // Function to get number of items in cart from database
-                                    getNumberOfCartItems(); 
-                                ?>
-                                <!-- PHP Code -->
-                            )
-                        </h2>
+            <form action="" method="POST">
+                <div class="cart row">
+                    <!-- ******************************************** || Cart Details Starts Here || ******************************************** -->
+                    <div class="cart_details col-md-8"> 
+                        <div class="cart_table">
+                            <h2 class="fs-2 bg-dark text-light py-2 px-3">
+                                Your Cart (
+                                    <!-- PHP Code -->
+                                    <?php 
+                                        // Function to get number of items in cart from database
+                                        getNumberOfCartItems(); 
+                                    ?>
+                                    <!-- PHP Code -->
+                                )
+                            </h2>
 
+                            <!-- PHP Code -->
+                            <?php
+                                // Function to get all the products details from the database
+                                getProductsToDisplayInCart();
+                            ?>
+                            <!-- PHP Code -->
+                        </div>
+                    </div>
+                    <!-- ******************************************** || Cart Details Ends Here || ******************************************** -->
+
+                    <!-- ******************************************** || Cart Summary Starts Here || ******************************************** -->
+                    <div class="cart_summary p-4 pb-0 col-md-4 bg-dark h-25">
                         <!-- PHP Code -->
                         <?php
-                            // Function to get all the products details from the database
-                            getProductsToDisplayInCart();
+                            // Function to get the Cart Summary Details from the database
+                            getCartSummary();
                         ?>
                         <!-- PHP Code -->
                     </div>
+                    <!-- ******************************************** || Cart Summary Ends Here || ******************************************** -->
                 </div>
-                <!-- ******************************************** || Cart Details Ends Here || ******************************************** -->
-
-                <!-- ******************************************** || Cart Summary Starts Here || ******************************************** -->
-                <div class="cart_summary p-4 pb-0 col-md-4 bg-dark h-25">
-                    <!-- PHP Code -->
-                    <?php
-                        // Function to get the Cart Summary Details from the database
-                        getCartSummary();
-                    ?>
-                    <!-- PHP Code -->
-                </div>
-                <!-- ******************************************** || Cart Summary Ends Here || ******************************************** -->
-            </div>
+            </form>
         </section>
         <!-- ******************************************** || Cart Section Ends Here || *********************************************** -->
     </main>
