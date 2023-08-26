@@ -450,6 +450,13 @@
                 $product_quantity = 0;
                 $total_price += $product_price;
     
+                if(isset($_POST['update_details'])) {
+                    $product_quantity = $_POST['quantity'];
+                    $update_cart_table_query = "update `cart_details` set quantity = $product_quantity where ip_address = '$ip_address'";
+                    $update_cart_table_query_result = mysqli_query($con, $update_cart_table_query);
+                    $total_price *= $product_quantity; 
+                }
+
                 echo "
                     <div class='product mt-4 border py-3'>
                         <div class='product_details d-flex column-gap-4 mb'>
@@ -457,10 +464,10 @@
                             <div class='details'>
                                 <h4>$product_title</h4>
                                 <p class='fs-5 mt-3'>Price: &#8377; $product_price</p>
-                                <span class='fs-5 me-3'>Quantity</span><input type='number' value='$product_quantity' name='quantity' class='w-25 ps-1 text-center'>
+                                <span class='fs-5 me-3'>Quantity</span><input type='text' name='quantity' value='$product_quantity' class='w-25 ps-1 text-center'>
                                 <div class='buttons'>
-                                    <button class='border-0 bg-primary mt-4 text-light py-2 px-4'>Remove</button>
-                                    <button class='border-0 bg-primary mt-4 text-light py-2 px-4 ms-3'>Update Details</button>
+                                    <input type='submit' name='remove_product' value='Remove' class='border-0 bg-primary mt-4 text-light py-2 px-4'>
+                                    <input type='submit' name='update_details' value='Update Details' class='border-0 bg-primary mt-4 text-light py-2 px-4 ms-3'>
                                 </div>
                             </div>
                         </div>
@@ -480,6 +487,11 @@
         $select_query = "select * from `cart_details` where ip_address = '$ip_address'";
         $select_query_result = mysqli_query($con, $select_query);
         $number_of_rows = mysqli_num_rows($select_query_result);
+
+        if(isset($_POST['update_details'])) {
+            $product_quantity = $_POST['quantity'];
+            $total_price *= $product_quantity; 
+        }
 
         if($number_of_rows != 0) {
             echo "
