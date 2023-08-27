@@ -447,14 +447,28 @@
                 $product_title = $table_row['product_title'];
                 $product_image = $table_row['product_image1'];
                 $product_price = $table_row['product_price'];
-                $product_quantity = 0;
+                $product_quantity = 1;
                 $total_price += $product_price;
     
+                // Checking if update details button is clicked then updated the total price in the cart summary
                 if(isset($_POST['update_details'])) {
                     $product_quantity = $_POST['quantity'];
                     $update_cart_table_query = "update `cart_details` set quantity = $product_quantity where ip_address = '$ip_address'";
                     $update_cart_table_query_result = mysqli_query($con, $update_cart_table_query);
                     $total_price *= $product_quantity; 
+                }
+
+                // Checking if remove button is clicked and if it is clicked then remove that product
+                if(isset($_POST['remove_product'])) {
+                    $id = $_POST['product_id'];
+                    
+                    $remove_product_query = "delete from `cart_details` where product_id = $id";
+                    $remove_product_query_result = mysqli_query($con, $remove_product_query);
+
+                    if($remove_product_query_result) {
+                        echo "<script>alert('$product_title removed from Cart.')</script>";
+                        echo "<script>window.open('cart.php', '_self')</script>";
+                    }
                 }
 
                 echo "
@@ -466,7 +480,9 @@
                                 <p class='fs-5 mt-3'>Price: &#8377; $product_price</p>
                                 <span class='fs-5 me-3'>Quantity</span><input type='text' name='quantity' value='$product_quantity' class='w-25 ps-1 text-center'>
                                 <div class='buttons'>
-                                    <input type='submit' name='remove_product' value='Remove' class='border-0 bg-primary mt-4 text-light py-2 px-4'>
+                                    <!-- input[checkbox] element for checking when user clicks on remove product -->
+                                    <input type='checkbox' hidden value='$product_id' id='check' class='product_checkbox' name='product_id'>
+                                    <input type='submit' name='remove_product' value='Remove' class='remove_product border-0 bg-primary mt-4 text-light py-2 px-4'>
                                     <input type='submit' name='update_details' value='Update Details' class='border-0 bg-primary mt-4 text-light py-2 px-4 ms-3'>
                                 </div>
                             </div>
