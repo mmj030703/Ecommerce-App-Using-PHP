@@ -22,7 +22,7 @@
     <!-- ******************************************** || Main Starts Here || *********************************************** -->
     <main>
         <div class="form_container container_fluid my-3">
-            <h1 class="heading text-center mb-2">Insert Product</h1>
+            <h1 class="heading text-center mb-2">Register</h1>
 
             <div class="w-100">
                 <!-- ******************************************** || Form Starts Here || *********************************************** -->
@@ -72,7 +72,7 @@
 
                     <!-- Register Button -->
                     <div class="register_button_container form-outline mb-4 w-50 m-auto">
-                        <input type="submit" name="register_user" class="btn btn-primary mb-3" value="Register User">
+                        <input type="submit" name="register_user" class="btn btn-primary mb-3" value="Register">
                         <p class="mx-1 fw-bold small">Already have an account ?<a class="text-danger text-decoration-none" href="./user_login.php"> Login</a></p>
                     </div> 
                 </form>
