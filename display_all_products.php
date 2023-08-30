@@ -100,7 +100,7 @@
                     <a class="nav-link text-light">Welcome Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Login</a>
+                    <a class="nav-link text-light" href="./users_area/user_login.php">Login</a>
                 </li>
             </ul>
         </div>
