@@ -1,7 +1,4 @@
 <?php
-    // Including connect.php in includes folder to access the connection variable $con.
-    include('./includes/connect.php');
-
     // Function for getting limited products from database 
     function getProducts() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
