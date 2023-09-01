@@ -27,7 +27,7 @@
 
             <div class="w-100">
                 <!-- ******************************************** || Form Starts Here || *********************************************** -->
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" class="has-error">
                     <!-- UserName -->
                     <div class="username_container form-outline mb-4 w-50 m-auto">
                         <label for="username" class="form-label">Username</label>
@@ -91,6 +91,8 @@
         $user_username = $_POST['user_username'];
         $user_email = $_POST['user_email'];
         $user_password = $_POST['user_password'];
+        // Password Hashing for security purpose.
+        $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
         $user_password_confirmed = $_POST['user_password_confirmed'];
         $user_address = $_POST['user_address'];
         $user_contact = $_POST['user_contact'];
@@ -98,17 +100,42 @@
         $user_image_tmp = $_FILES['user_image']['tmp_name'];
         $user_ip_address = getIPAddress();
 
-        move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+        // Checking Edge Cases 
+        $check_query = "select * from `user_table` where user_email = '$user_email'";
+        $check_query_result = mysqli_query($con, $check_query);
+        $number_of_rows = mysqli_num_rows($check_query_result);
 
-        $insert_query = "insert into `user_table` (username, user_email, user_password, user_image, user_ip, user_address, user_mobile) values ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip_address', '$user_address', '$user_contact')";
-        $insert_query_result = mysqli_query($con, $insert_query);
-
-        if($insert_query_result) {
+        // If there are already records with same email address than we dont register this user and give that user a suitable message.
+        if($number_of_rows > 0) {
             echo "
                 <script>
-                    alert('User Registered Successfully.');
+                    alert('User Already Registered! Please Log In.');
+                    window.open('user_login.php', '_self');
                 </script>
             ";
+        }
+        // If the passwords do not match then give the user a suitable mesaage.
+        else if($user_password != $user_password_confirmed) {
+            echo "
+                <script>
+                    alert('Passwords do not Match.');
+                </script>
+            ";
+        }
+        // If user is not already registered and passwords are matching then this users details can be added to the database.
+        else {
+            move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+
+            $insert_query = "insert into `user_table` (username, user_email, user_password, user_image, user_ip, user_address, user_mobile) values ('$user_username', '$user_email', '$hash_password', '$user_image', '$user_ip_address', '$user_address', '$user_contact')";
+            $insert_query_result = mysqli_query($con, $insert_query);
+
+            if($insert_query_result) {
+                echo "
+                    <script>
+                        alert('User Registered Successfully.');
+                    </script>
+                ";
+            }
         }
     }
 ?>
