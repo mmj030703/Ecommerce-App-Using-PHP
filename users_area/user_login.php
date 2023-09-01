@@ -21,10 +21,10 @@
             <div class="w-100 mt-4">
                 <!-- ******************************************** || Form Starts Here || *********************************************** -->
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <!-- UserName -->
-                    <div class="username_container form-outline mb-4 w-50 m-auto">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" name="user_username" id="username" class="form-control" placeholder="Enter your Username" autocomplete="off" required="required">
+                    <!-- Email -->
+                    <div class="email_container form-outline mb-4 w-50 m-auto">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="user_email" id="email" class="form-control" placeholder="Enter your Email" autocomplete="off" required="required">
                     </div> 
                     
                     <!-- Password -->
