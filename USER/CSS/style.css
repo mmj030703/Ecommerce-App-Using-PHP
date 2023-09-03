@@ -5,11 +5,9 @@
     /* overflow-x: hidden; */
 }
 
-/*
-*::-webkit-scrollbar {
-    display: none;
-} 
-*/
+body {
+    overflow-x: hidden;
+}
 
 .logo {
     width: 50px;
