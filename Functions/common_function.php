@@ -526,7 +526,6 @@
                             <p class='fs-5'>TOTAL PRICE</p>
                             <span class='subtotal_price text-right fs-5'>
                                 &#8377; $total_price
-                                <!-- PHP Code -->
                             </span>
                         </div>
                     </div>
