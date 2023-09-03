@@ -124,6 +124,14 @@
         }
         // If user is not already registered and passwords are matching then this users details can be added to the database.
         else {
+            $products_select_query = "select * from `cart_details` where ip_address = '$user_ip_address'";
+            $products_select_query_result = mysqli_query($con, $products_select_query);
+            $number_of_cart_products = mysqli_num_rows($products_select_query_result);
+
+            if($number_of_cart_products > 0) {
+                $_SESSION['email'] = $user_email;
+            }
+
             move_uploaded_file($user_image_tmp, "./user_images/$user_image");
 
             $insert_query = "insert into `user_table` (username, user_email, user_password, user_image, user_ip, user_address, user_mobile) values ('$user_username', '$user_email', '$hash_password', '$user_image', '$user_ip_address', '$user_address', '$user_contact')";
@@ -132,7 +140,8 @@
             if($insert_query_result) {
                 echo "
                     <script>
-                        alert('User Registered Successfully.');
+                        alert('User Registered Successfully !');
+                        window.open('./user_login.php', '_self');
                     </script>
                 ";
             }
