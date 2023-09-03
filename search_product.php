@@ -22,6 +22,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Link -->
     <link rel="stylesheet" href="./USER/CSS/style.css">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            overflow-x: hidden;
+        }    
+    </style>
+    <!-- Internal CSS -->
 </head>
 
 <body>
@@ -44,7 +52,7 @@
                             <a class="nav-link" href="display_all_products.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register</a>
+                            <a class="nav-link" href="./users_area/user_registration.php">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cart.php">
@@ -61,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link">
                                 Total Price : &#8377; 
                                 <!-- PHP Code -->
                                 <?php
@@ -143,11 +151,11 @@
                 <!-- ******************************************** || Products Container Ends Here || *********************************************** -->
 
                 <!-- ******************************************** || Filter Container Starts Here || *********************************************** -->
-                <div class="filter_container col-md-2 bg-dark p-0">
+                <div class="filter_container col-md-2 bg-dark p-0 pb-3 h-100">
 
                     <!-- ******************************************** || Brands Starts Here || *********************************************** -->
-                    <ul class="brands navbar-nav me-auto text-center">
-                        <li class="nav-item bg-info">
+                    <ul class="brands navbar-nav me-auto text-center pb-2">
+                        <li class="nav-item bg-primary">
                             <a class="nav-link text-light fs-4" href="#">Delivery Brands</a>
                         </li>
 
@@ -162,7 +170,7 @@
 
                     <!-- ******************************************** || Category Starts Here || *********************************************** -->
                     <ul class="categories navbar-nav me-auto text-center">
-                        <li class="nav-item bg-info">
+                        <li class="nav-item bg-primary">
                             <a class="nav-link text-light fs-4" href="#">Category</a>
                         </li>
                         

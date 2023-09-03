@@ -41,7 +41,7 @@
                             <a class="nav-link" href="../display_all_products.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register</a>
+                            <a class="nav-link" href="user_registration.php">Register</a>
                         </li>
                     </ul>
 
