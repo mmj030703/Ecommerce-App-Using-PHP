@@ -79,7 +79,7 @@
         <section class="container">
             <!-- PHP Code -->
             <?php
-                if(!(isset($_SESSION['username']))) {
+                if(!(isset($_SESSION['email']))) {
                     include('user_login.php');
                 }
                 else {
