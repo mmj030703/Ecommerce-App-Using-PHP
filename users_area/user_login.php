@@ -2,6 +2,9 @@
 <?php 
     include('../includes/connect.php');
     include('../Functions/common_function.php');
+
+    // Starting the Session
+    @session_start();
 ?>
 <!-- PHP Code -->
 
@@ -58,6 +61,7 @@
 <?php 
     // Checking if user clicked on Login Button
     if(isset($_POST['login_user'])) {
+        $user_username = null;
         $user_email = $_POST['user_email'];
         $user_password = $_POST['user_password'];
         $user_ip_address = getIPAddress();
@@ -65,7 +69,15 @@
         $select_query = "select * from `user_table` where user_email = '$user_email'";
         $select_query_result = mysqli_query($con, $select_query);
         $number_of_users = mysqli_num_rows($select_query_result);
-        $hash_password = mysqli_fetch_assoc($select_query_result)['user_password'];
+        // $user_table = mysqli_fetch_assoc($select_query_result);
+        $hash_password = null;
+        while($user_table = mysqli_fetch_assoc($select_query_result)) {
+            $hash_password = $user_table['user_password'];
+            $user_username = $user_table['username'];
+            break;
+        }
+        // $hash_password = $user_table['user_password'];
+        // echo "<script>alert($hash_password)</script>";
 
         $products_select_query = "select * from `cart_details` where ip_address = '$user_ip_address'";
         $products_select_query_result = mysqli_query($con, $products_select_query);
@@ -77,6 +89,7 @@
             $_SESSION['email'] = $user_email;
             if($number_of_cart_products > 0) {
                 $_SESSION['email'] = $user_email;
+                $_SESSION['username'] = $user_username;
                 echo "
                     <script>
                         alert('Login Successful !');

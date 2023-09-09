@@ -1,6 +1,9 @@
 <?php
     // Including connect.php to connect to Database 
     include('../includes/connect.php');
+
+    // Starting the Session
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +85,19 @@
                 if(!(isset($_SESSION['email']))) {
                     include('user_login.php');
                 }
+                else if($_GET['redirectURI'] == 'paytm_payment.php') {
+                    echo "
+                        <script>
+                            // window.open('../cart.php', '_self');
+                            window.open('./paytm.php', '_self');
+                        </script>
+                    ";
+                }
                 else {
                     echo "
                         <script>
-                            window.open('../cart.php', '_self');
+                            // window.open('../cart.php', '_self');
+                            window.open('./cash_on_delivery.php', '_self');
                         </script>
                     ";
                 }
