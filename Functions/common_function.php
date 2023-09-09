@@ -423,6 +423,7 @@
         return $total_price;
     }
 
+    // Function to get products from Database and inserting it the to Cart Page Products Section.
     function getProductsToDisplayInCart() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
@@ -490,6 +491,7 @@
         }
     }
 
+    // Function to get total cart price and inserting it to the DOM in Cart Page Cart Summary Section
     function getCartSummary() {
         // We are saying that use the Global variable $con otherwise it will give error as this function does not have any local var $con.
         global $con;
