@@ -4,6 +4,9 @@
 
     // including common_function.php which contains all the helper functions.
     include('./Functions/common_function.php');
+
+    // Starting the Session
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -104,12 +107,39 @@
     <section class="welcome_container container_fluid">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-light">Welcome Customer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="./users_area/user_login.php">Login</a>
-                </li>
+                <!-- PHP Code -->
+                <?php
+                    if(!isset($_SESSION['email'])) {
+                        echo "
+                            <li class='nav-item'>
+                                <a class='nav-link text-light'>Welcome Customer</a>
+                            </li>
+                        ";
+                    }
+                    else {
+                        echo "
+                            <li class='nav-item'>
+                                <a class='nav-link text-light'>Welcome ".$_SESSION['username']."</a>
+                            </li>
+                        ";
+                    }
+
+                    if(!isset($_SESSION['email'])) {
+                        echo "
+                            <li class='nav-item'>
+                                <a class='nav-link text-light' href='./users_area/user_login.php'>Login</a>
+                            </li>
+                        ";
+                    }
+                    else {
+                        echo "
+                            <li class='nav-item'>
+                                <a class='nav-link text-light' href='./users_area/logout.php'>Logout</a>
+                            </li>
+                        ";
+                    }
+                ?>
+                <!-- PHP Code -->
             </ul>
         </div>
     </section>
