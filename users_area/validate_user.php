@@ -86,18 +86,18 @@
                     include('user_login.php');
                 }
                 else if($_GET['redirectURI'] == 'paytm_payment.php') {
+                    $user_id = $_GET['user_id'];
                     echo "
                         <script>
-                            // window.open('../cart.php', '_self');
-                            window.open('./paytm.php', '_self');
+                            window.open('./paytm.php?user_id=$user_id', '_self');
                         </script>
                     ";
                 }
                 else {
+                    $user_id = $_GET['user_id'];
                     echo "
                         <script>
-                            // window.open('../cart.php', '_self');
-                            window.open('./cash_on_delivery.php', '_self');
+                            window.open('./cash_on_delivery.php?user_id=$user_id', '_self');
                         </script>
                     ";
                 }
