@@ -412,12 +412,13 @@
 
         while($table_row = mysqli_fetch_array($select_query_result)) {
             $product_id = $table_row['product_id'];
+            $product_quantity = $table_row['quantity'];
             $product_query = "select * from `products` where product_id = '$product_id'";
             $product_query_result = mysqli_query($con, $product_query);
 
             $table_row = mysqli_fetch_assoc($product_query_result);
             $product_price = $table_row['product_price'];
-            $total_price += $product_price;
+            $total_price += ($product_price * ($product_quantity == 0 ? 1 : $product_quantity));
         }
         echo $total_price;
         return $total_price;
@@ -438,6 +439,7 @@
         if($number_of_rows != 0) {
             while($table_row = mysqli_fetch_array($select_query_result)) {
                 $product_id = $table_row['product_id'];
+                $product_quantity = $table_row['quantity'] == 0 ? 1 : $table_row['quantity'];
                 $product_query = "select * from `products` where product_id = '$product_id'";
                 $product_query_result = mysqli_query($con, $product_query);
     
@@ -445,15 +447,20 @@
                 $product_title = $table_row['product_title'];
                 $product_image = $table_row['product_image1'];
                 $product_price = $table_row['product_price'];
-                $product_quantity = 1;
                 $total_price += $product_price;
     
                 // Checking if update details button is clicked then updated the total price in the cart summary
                 if(isset($_POST['update_details'])) {
+                    $id = $_POST['update_details'];
                     $product_quantity = $_POST['quantity'];
-                    $update_cart_table_query = "update `cart_details` set quantity = $product_quantity where ip_address = '$ip_address'";
+                    $update_cart_table_query = "update `cart_details` set quantity = $product_quantity where ip_address = '$ip_address' AND product_id=$id";
                     $update_cart_table_query_result = mysqli_query($con, $update_cart_table_query);
                     $total_price *= $product_quantity; 
+                    
+                    if($update_cart_table_query_result) {
+                        echo "<script>alert('$product_title Quantity updated to $product_quantity.')</script>";
+                        echo "<script>window.open('cart.php', '_self')</script>";
+                    }
                 }
 
                 // Checking if remove button is clicked and if it is clicked then remove that product
@@ -473,17 +480,19 @@
                     <div class='product mt-4 border py-3'>
                         <div class='product_details d-flex column-gap-4 mb'>
                             <img src='./ADMIN/Images/$product_image' class='cart_img' alt=''>
-                            <div class='details'>
-                                <h4>$product_title</h4>
-                                <p class='fs-5 mt-3'>Price: &#8377; $product_price</p>
-                                <span class='fs-5 me-3'>Quantity</span><input type='text' name='quantity' value='$product_quantity' class='w-25 ps-1 text-center'>
-                                <div class='buttons'>
-                                    <!-- input[checkbox] element for checking when user clicks on remove product -->
-                                    <input type='checkbox' hidden value='$product_id' id='check' class='product_checkbox' name='product_id'>
-                                    <input type='submit' name='remove_product' value='Remove' class='remove_product border-0 bg-primary mt-4 text-light py-2 px-4'>
-                                    <input type='submit' name='update_details' value='Update Details' class='border-0 bg-primary mt-4 text-light py-2 px-4 ms-3'>
+                            <form action='' method='POST'>
+                                <div class='details'>
+                                    <h4>$product_title</h4>
+                                    <p class='fs-5 mt-3'>Price: &#8377; $product_price</p>
+                                    <span class='fs-5 me-3'>Quantity</span><input type='text' name='quantity' value='$product_quantity' class='w-25 ps-1 text-center'>
+                                    <div class='buttons'>
+                                        <!-- input[checkbox] element for checking when user clicks on remove product -->
+                                        <input type='checkbox' hidden value='$product_id' id='check' class='product_checkbox' name='product_id'>
+                                        <input type='submit' name='remove_product' value='Remove' class='remove_product border-0 bg-primary mt-4 text-light py-2 px-4'>
+                                        <button type='submit' name='update_details' value='$product_id' class='border-0 bg-primary mt-4 text-light py-2 px-4 ms-3'>Update Quantity</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 ";

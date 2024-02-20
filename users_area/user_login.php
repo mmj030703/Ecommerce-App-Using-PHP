@@ -10,6 +10,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <!-- ******************************************** || Main Starts Here || *********************************************** -->
     <main>
@@ -34,20 +36,23 @@
                     <!-- Email -->
                     <div class="email_container form-outline mb-4 w-50 m-auto">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="user_email" id="email" class="form-control" placeholder="Enter your Email" autocomplete="off" required="required">
-                    </div> 
-                    
+                        <input type="email" name="user_email" id="email" class="form-control"
+                            placeholder="Enter your Email" autocomplete="off" required="required">
+                    </div>
+
                     <!-- Password -->
                     <div class="password_container form-outline mb-4 w-50 m-auto">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="user_password" id="password" class="form-control" placeholder="Enter your Password" autocomplete="off" required="required">
+                        <input type="password" name="user_password" id="password" class="form-control"
+                            placeholder="Enter your Password" autocomplete="off" required="required">
                     </div>
 
                     <!-- Login Button -->
                     <div class="login_button_container form-outline mb-4 w-50 m-auto">
                         <input type="submit" name="login_user" class="btn btn-primary mb-3" value="Login">
-                        <p class="mx-1 fw-bold small">Don't have an account ?<a class="text-danger text-decoration-none" href="./user_registration.php"> Register</a></p>
-                    </div> 
+                        <p class="mx-1 fw-bold small">Don't have an account ?<a class="text-danger text-decoration-none"
+                                href="./user_registration.php"> Register</a></p>
+                    </div>
                 </form>
                 <!-- ******************************************** || Form Ends Here || *********************************************** -->
             </div>
@@ -55,6 +60,7 @@
     </main>
     <!-- ******************************************** || Main Ends Here || *********************************************** -->
 </body>
+
 </html>
 
 <!-- PHP Code -->
@@ -99,6 +105,7 @@
             }
             else {
                 $_SESSION['email'] = $user_email;
+                $_SESSION['username'] = $user_username;
                 echo "
                     <script>
                         alert('Login Successful !');
