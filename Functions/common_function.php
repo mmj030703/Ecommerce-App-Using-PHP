@@ -566,4 +566,40 @@
             ";
         }
     }
+
+    // Function to get the user order details 
+    function getUserOrderDetails() {
+        global $con;
+        $username = $_SESSION['username'];
+        $getDetails = "Select * from `user_table` where username='$username'";
+        $result = mysqli_query($con, $getDetails);
+        $result_row = mysqli_fetch_assoc($result);
+        $user_id = $result_row['user_id'];
+        
+        if(!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) {
+            $getOrders = "Select * from `user_orders` where user_id=$user_id and order_status='pending'";
+            $ordersResult = mysqli_query($con, $getOrders); 
+            $ordersRowCount = mysqli_num_rows($ordersResult);
+            if($ordersRowCount) {
+                echo "
+                    <h3 class='text-center'>You have <span class='text-danger'>$ordersRowCount</span> pending orders</h3>
+                    <p class='d-flex justify-content-center'>
+                        <a href='profile.php?my_orders' class='text-bg-primary text-decoration-none mt-4 bg-secondary text-center py-1 px-5 rounded-5'>
+                            Order Details
+                        </a>
+                    </p>
+                ";
+            }
+            else {
+                echo "
+                    <h3 class='text-center'>You have no pending orders</h3>
+                    <p class='d-flex justify-content-center'>
+                        <a href='../index.php' class='text-bg-primary text-decoration-none mt-4 bg-secondary text-center py-1 px-5 rounded-5'>
+                            Continue Shopping
+                        </a>
+                    </p>
+                ";
+            }
+        }
+    }
 ?>

@@ -39,21 +39,21 @@ body {
     object-fit: contain;
 }
 
-.prev, 
+.prev,
 .next {
     width: 40px;
-    background-color: rgb(33,37,41);
+    background-color: rgb(33, 37, 41);
     opacity: 1;
     height: max-content;
     margin: auto;
 }
 
-.product_prev_btn, 
+.product_prev_btn,
 .product_next_btn {
     padding: 1.3rem 1.7rem;
 }
 
-.product_prev_btn:hover, 
+.product_prev_btn:hover,
 .product_next_btn:hover {
     cursor: pointer;
 }
@@ -93,7 +93,7 @@ body {
     bottom: -19px;
     height: 80px;
     width: 80px;
-} 
+}
 
 .empty_cart {
     height: 51.4vh;
