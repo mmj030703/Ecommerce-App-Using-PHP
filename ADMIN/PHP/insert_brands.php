@@ -41,14 +41,14 @@
 <form method="POST" action="">
     <!-- ******************************************** || Input Field Starts Here || *********************************************** -->
     <div class="input-group mb-2">
-        <span class="input-group-text bg-primary text-light border border-primary" id="addon-wrapping"><i class="fa-solid fa-receipt"></i></span>
-        <input type="text" class="form-control border border-primary" name="brand_title" placeholder="Insert Brand..." aria-label="Brands" aria-describedby="basic-addon1">
+        <span class="input-group-text bg-secondary text-light border border-secondary" id="addon-wrapping"><i class="fa-solid fa-receipt"></i></span>
+        <input type="text" class="form-control border border-secondary" name="brand_title" placeholder="Insert Brand..." aria-label="Brands" aria-describedby="basic-addon1">
     </div>
     <!-- ******************************************** || Input Field Ends Here || *********************************************** -->
 
     <!-- ******************************************** || Insert Button Starts Here || *********************************************** -->
     <div class="input-group mb-2">
-        <input type="submit" class="bg-primary border-0 p-2 my-3" name="insert_brand" value="Insert Brand" aria-describedby="basic-addon1">
+        <input type="submit" class="bg-secondary text-white border-0 p-2 my-3" name="insert_brand" value="Insert Brand" aria-describedby="basic-addon1">
     </div>
     <!-- ******************************************** || Insert Button Ends Here || *********************************************** -->
 </form>

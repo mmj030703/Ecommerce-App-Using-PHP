@@ -1,3 +1,11 @@
+<?php
+    // Including connect.php to connect to Database 
+    include('../includes/connect.php');
+
+    // including common_function.php which contains all the helper functions.
+    include('../Functions/common_function.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +21,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Link -->
     <link rel="stylesheet" href="./CSS/style.css">
+
+    <style>
+        .main-section {
+            min-height: 37.9vh;
+        }
+
+        .admin-nav-controls {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
     <!-- ******************************************** || Header Starts Here || *********************************************** -->
@@ -55,18 +73,18 @@
 
             <!-- ******************************************** || Admin Control Buttons Starts Here || *********************************************** -->
             <div class="control_buttons_row container-fluid">
-                <div class="control_buttons d-flex justify-content-center mt-4 gap-2 flex-wrap">
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./PHP/insert_product.php">Insert Products</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Products</a></button>
+                <div class="admin-nav-controls control_buttons d-flex justify-content-center gap-2 flex-wrap">
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./PHP/insert_product.php">Insert Products</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="index.php?view_products">View Products</a></button>
                     <!-- After ? -> insert_category is the GET Variable -->
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./index.php?insert_category">Insert Categories</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Categories</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="./index.php?insert_brand">Insert Brands</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">View Brands</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">All Orders</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">All Payments</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">List Users</a></button>
-                    <button class="border-0"><a class="nav-link bg-primary text-light p-2" href="#">Logout</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?insert_category">Insert Categories</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">View Categories</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?insert_brand">Insert Brands</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">View Brands</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">All Orders</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">All Payments</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">List Users</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">Logout</a></button>
                 </div>
             </div>
             <!-- ******************************************** || Admin Control Buttons Ends Here || *********************************************** -->
@@ -77,7 +95,7 @@
     <!-- ******************************************** || Main Starts Here || *********************************************** -->
     <main>
         <!-- ******************************************** || display on button click Starts Here || *********************************************** -->
-        <section class="display">
+        <section class="main-section display">
             <div class="container_to_display mt-3 px-5">
                 <!-- PHP Code -->
                 <?php 
@@ -87,6 +105,15 @@
                     }
                     else if(isset($_GET['insert_brand'])) {
                         include('./PHP/insert_brands.php');
+                    }
+                    else if(isset($_GET['view_products'])) {
+                        include('./PHP/view_products.php');
+                    }
+                    else if(isset($_GET['edit_product'])) {
+                        include('./PHP/edit_product.php');
+                    }
+                    else if(isset($_GET['delete_product'])) {
+                        include('./PHP/delete_product.php');
                     }
                 ?>
                 <!-- PHP Code -->
@@ -101,6 +128,9 @@
         <h4 class="text-black mt-2">All Rights Reserved &copy; Shoppers Bay.</h4>
         <p class="fs-5 m-2">Made by Mayank M Jain ♥</p>
     </div> -->
+    <?php 
+        include('../USER/PHP/footer.php');
+    ?>
     <!-- ******************************************** || Footer Ends Here || *********************************************** -->
 
     <!-- BootStrap Script Link -->
