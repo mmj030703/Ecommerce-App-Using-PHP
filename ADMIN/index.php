@@ -78,12 +78,12 @@
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="index.php?view_products">View Products</a></button>
                     <!-- After ? -> insert_category is the GET Variable -->
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?insert_category">Insert Categories</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">View Categories</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?view_categories">View Categories</a></button>
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?insert_brand">Insert Brands</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">View Brands</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">All Orders</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">All Payments</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">List Users</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?view_brands">View Brands</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_orders">All Orders</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_payments">All Payments</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_users">List Users</a></button>
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">Logout</a></button>
                 </div>
             </div>
@@ -115,6 +115,36 @@
                     else if(isset($_GET['delete_product'])) {
                         include('./PHP/delete_product.php');
                     }
+                    else if(isset($_GET['view_categories'])) {
+                        include('./PHP/view_categories.php');
+                    }
+                    else if(isset($_GET['view_brands'])) {
+                        include('./PHP/view_brands.php');
+                    }
+                    else if(isset($_GET['edit_category'])) {
+                        include('./PHP/edit_category.php');
+                    }
+                    else if(isset($_GET['delete_category'])) {
+                        include('./PHP/delete_category.php');
+                    }
+                    else if(isset($_GET['edit_brand'])) {
+                        include('./PHP/edit_brand.php');
+                    }
+                    else if(isset($_GET['delete_brand'])) {
+                        include('./PHP/delete_brand.php');
+                    }
+                    else if(isset($_GET['all_orders'])) {
+                        include('./PHP/all_orders.php');
+                    }
+                    else if(isset($_GET['delete_order'])) {
+                        include('./PHP/delete_order.php');
+                    }
+                    else if(isset($_GET['all_payments'])) {
+                        include('./PHP/all_payments.php');
+                    }
+                    else if(isset($_GET['all_users'])) {
+                        include('./PHP/all_users.php');
+                    }
                 ?>
                 <!-- PHP Code -->
             </div>
@@ -124,10 +154,6 @@
     <!-- ******************************************** || Main Ends Here || *********************************************** -->
 
     <!-- ******************************************** || Footer Starts Here || *********************************************** -->
-    <!-- <div class="footer container-fluid bg-primary text-center">
-        <h4 class="text-black mt-2">All Rights Reserved &copy; Shoppers Bay.</h4>
-        <p class="fs-5 m-2">Made by Mayank M Jain ♥</p>
-    </div> -->
     <?php 
         include('../USER/PHP/footer.php');
     ?>

@@ -7,7 +7,7 @@
         $result_product = mysqli_query($con, $delete_product);
         
         if ($result_product) {
-            echo "<script>alert('Product deleted successfully')</script>";
+            echo "<script>alert('Product deleted successfully!')</script>";
             echo "<script>window.open('./index.php', '_self')</script>";
         }
     }
