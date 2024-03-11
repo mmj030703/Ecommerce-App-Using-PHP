@@ -4,6 +4,9 @@
 
     // including common_function.php which contains all the helper functions.
     include('../Functions/common_function.php');
+
+    // Starting the Session
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +52,7 @@
                     <!-- ******************************************** || Navbar 2 Starts Here || *********************************************** -->
                     <nav class="nav nav-expand-lg">
                         <div class="logo_item d-flex align-items-center">
-                            <a class="navbar-brand fs-5" href="#">Welcome Admin</a>
+                            <a class="navbar-brand fs-5" href="#">Welcome <?php getAdminDetails('admin_username') ?></a>
                         </div>
                     </nav>
                     <!-- ******************************************** || Navbar 2 Ends Here || *********************************************** -->
@@ -66,13 +69,13 @@
         <div class="control_buttons_container d-flex bg-dark p-3">
             <!-- ******************************************** || Admin Details Starts Here || *********************************************** -->
             <div class="admin_details">
-                <img class="admin_image rounded-circle me-3" src="https://img.freepik.com/premium-photo/smiling-young-man-using-laptop-modern-office_109710-4878.jpg?w=2000" alt="admin_image">
-                <p class="admin_name text-light mb-0 ms-1 mt-1">Admin Name</p>
+                <img class="admin_image rounded-circle" src="./Images/<?php getAdminDetails('admin_image') ?>" alt="admin_image">
+                <p class="admin_name text-light text-center mb-0 mt-1"><?php getAdminDetails('admin_username') ?></p>
             </div>
             <!-- ******************************************** || Admin Details Ends Here || *********************************************** -->
 
             <!-- ******************************************** || Admin Control Buttons Starts Here || *********************************************** -->
-            <div class="control_buttons_row container-fluid">
+            <div class="control_buttons_row container-fluid ms-3">
                 <div class="admin-nav-controls control_buttons d-flex justify-content-center gap-2 flex-wrap">
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./PHP/insert_product.php">Insert Products</a></button>
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="index.php?view_products">View Products</a></button>
@@ -84,7 +87,7 @@
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_orders">All Orders</a></button>
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_payments">All Payments</a></button>
                     <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./index.php?all_users">List Users</a></button>
-                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="#">Logout</a></button>
+                    <button class="border-0"><a class="nav-link bg-secondary text-light p-2" href="./PHP/admin_logout.php">Logout</a></button>
                 </div>
             </div>
             <!-- ******************************************** || Admin Control Buttons Ends Here || *********************************************** -->
@@ -142,8 +145,14 @@
                     else if(isset($_GET['all_payments'])) {
                         include('./PHP/all_payments.php');
                     }
+                    else if(isset($_GET['delete_payment'])) {
+                        include('./PHP/delete_payment.php');
+                    }
                     else if(isset($_GET['all_users'])) {
                         include('./PHP/all_users.php');
+                    }
+                    else if(isset($_GET['delete_user'])) {
+                        include('./PHP/delete_user.php');
                     }
                 ?>
                 <!-- PHP Code -->

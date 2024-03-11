@@ -602,4 +602,25 @@
             }
         }
     }
+
+    // function to get details of admin
+    function getAdminDetails($toReturn) {
+        global $con;
+
+        $admin_email = $_SESSION["admin_email"];
+        $select_query = "SELECT * FROM `admin_table` WHERE admin_email = '$admin_email'";
+        $select_query_result = mysqli_query($con, $select_query);
+        $result_row = mysqli_fetch_assoc($select_query_result);
+        $admin_username = $result_row['admin_username'];
+        $admin_image = $result_row['admin_image'];
+
+        if($toReturn == 'admin_username') {
+            echo $admin_username;
+        }
+        else if($toReturn == 'admin_image') {
+            echo $admin_image;
+        }
+
+        return "";
+    }
 ?>
