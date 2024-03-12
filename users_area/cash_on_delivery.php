@@ -61,6 +61,5 @@
     //* Deleting the Products inside Cart Details as Orders are made Successfully
     $empty_cart = "delete from `cart_details` where ip_address = '$ip_address'";
     $empty_cart_result = mysqli_query($con, $empty_cart);
-
 ?>
 <!-- PHP Code -->

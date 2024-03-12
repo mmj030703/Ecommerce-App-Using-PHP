@@ -17,11 +17,11 @@
         $amount_due = $row_fetch['amount_due'];
     }
 
-    if(isset($_POST['confirm_payment'])){
+    if(isset($_POST['confirm_payment_through_cash_on_delivery'])) {
         $invoice_number = $_POST['invoice_number'];
         $amount = $_POST['amount'];
-        $payment_mode = $_POST['payment_mode'];
-        $insert_query = "insert into `user_payments` (order_id, invoice_number, amount, payment_mode) values ($order_id, $invoice_number, $amount, '$payment_mode')";
+        $payment_mode = 'cash on delivery';
+        $insert_query = "insert into `user_payments` (payment_id_razorpay, order_id, invoice_number, amount, payment_mode) values (NULL, $order_id, $invoice_number, $amount, '$payment_mode')";
         $result = mysqli_query($con, $insert_query);
     
         if($result){
@@ -34,6 +34,15 @@
         }
         $update_orders = "update `user_orders` set order_status = 'Complete' where order_id = $order_id";
         $update_orders_query_result = mysqli_query($con, $update_orders);
+    }
+    else if(isset($_POST['confirm_payment_through_razorpay'])) {
+        $order_id = $_GET['order_id'];
+        $select_data = "Select * from `user_orders` where order_id = $order_id";
+        $result = mysqli_query($con, $select_data);
+        $row_fetch = mysqli_fetch_assoc($result);
+        $invoice_number = $row_fetch['invoice_number'];
+        $amount_due = $row_fetch['amount_due'];
+        echo "<script>window.open('./payOnline.php?order_id=$order_id&invoice_number=$invoice_number&amount=$amount_due', '_self')</script>";
     }
 ?>
 
@@ -90,17 +99,9 @@
                 <input type="text" value="<?php echo $amount_due ?>" readonly class="form-input form-control"
                     name="amount">
             </div>
-            <div class="form-outline my-4">
-                <select name="payment_mode" class="form-input form-select m-auto">
-                    <option id='payment-option'>Select Payment Mode</option>
-                    <option id='payment-option'>UPI</option>
-                    <option id='payment-option'>Netbanking</option>
-                    <option id='payment-option'>Paypal</option>
-                    <option id='payment-option'>Cash on Delivery</option>
-                </select>
-            </div>
-            <div class="form-outline d-flex justify-content-center mt-2">
-                <input type="submit" class="w-50 bg-secondary text-center py-1 rounded-5 text-white border-0" value="Confirm" name="confirm_payment">
+            <div class="form-outline d-flex column-gap-4 justify-content-center mt-2">
+                <input type="submit" class="w-50 bg-secondary text-center py-1 rounded-5 text-white border-0" value="Razorpay" name="confirm_payment_through_razorpay">
+                <input type="submit" class="w-50 bg-secondary text-center py-1 rounded-5 text-white border-0" value="Cash on Delivery" name="confirm_payment_through_cash_on_delivery">
             </div>
         </form>
     </div>

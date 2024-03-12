@@ -94,14 +94,6 @@
                 if(!(isset($_SESSION['email']))) {
                     include('user_login.php');
                 }
-                else if($_GET['redirectURI'] == 'paytm_payment.php') {
-                    $user_id = $_GET['user_id'];
-                    echo "
-                        <script>
-                            window.open('./paytm.php?user_id=$user_id', '_self');
-                        </script>
-                    ";
-                }
                 else {
                     $user_id = $_GET['user_id'];
                     echo "

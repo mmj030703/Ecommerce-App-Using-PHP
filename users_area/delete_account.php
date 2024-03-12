@@ -27,7 +27,12 @@
         $delete_query = "DELETE FROM `user_table` WHERE user_email = '$user_email'";
         $result = mysqli_query($con, $delete_query);
         if($result) {
-            session_destroy();
+            if(isset($_SESSION['email'])) {
+                unset( $_SESSION['email'] );
+            }
+            if(isset($_SESSION['username'])) {
+                unset( $_SESSION['username'] );
+            }
             echo "<script>alert('Account Deleted successfully')</script>";
             echo "<script>window.open('../index.php','_self')</script>";
         }
