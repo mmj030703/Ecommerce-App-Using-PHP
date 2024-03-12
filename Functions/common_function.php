@@ -319,7 +319,7 @@
                         <p class='fs-3'>Price:  &#8377; $product_price</p>
                     </div>
                     <div class='buttons mt-2 d-flex justify-content-center column-gap-5 my-4'>
-                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary fs-5'>Add to Cart</a>
+                        <a href='../index.php?add_to_cart=$product_id' class='btn btn-primary fs-5'>Add to Cart</a>
                         <a href='./display_all_products.php' class='btn btn-dark px-3 fs-5'>Continue Shopping</a>
                     </div>
                 ";

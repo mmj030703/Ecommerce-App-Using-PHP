@@ -42,7 +42,7 @@
         $row_fetch = mysqli_fetch_assoc($result);
         $invoice_number = $row_fetch['invoice_number'];
         $amount_due = $row_fetch['amount_due'];
-        echo "<script>window.open('./payOnline.php?order_id=$order_id&invoice_number=$invoice_number&amount=$amount_due', '_self')</script>";
+        echo "<script>window.open('http://shoppersbay.infinityfreeapp.com/users_area/payOnline.php?order_id=$order_id&invoice_number=$invoice_number&amount=$amount_due', '_self')</script>";
     }
 ?>
 

@@ -48,13 +48,13 @@
                             var payment_id = response.razorpay_payment_id;
 
                             $.ajax({
-                                url: 'payment-process.php',
+                                url: 'http://shoppersbay.infinityfreeapp.com/users_area/payment-process.php',
                                 type: 'POST',
                                 data: {order_id: $order_id, payment_id: payment_id, invoice_number: $invoice_number, amount: $amount},
                                 success: function(finalResponse) {
                                     if (finalResponse == 'Done') {
                                         alert('Razorpay Payment done successfully!');
-                                        window.open('./profile.php?my_orders', '_self');
+                                        window.open('http://shoppersbay.infinityfreeapp.com/users_area/profile.php?my_orders', '_self');
                                     }
                                     else {
                                         alert('Something went wrong! Please check console.log to find error!');
