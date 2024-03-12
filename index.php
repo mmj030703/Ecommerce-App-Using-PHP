@@ -28,9 +28,9 @@
 
     <!-- Internal CSS -->
     <style>
-        body {
-            overflow-x: hidden;
-        }    
+    body {
+        overflow-x: hidden;
+    }
     </style>
     <!-- Internal CSS -->
 </head>
@@ -41,9 +41,13 @@
         <!-- ******************************************** || Navbar Starts Here || *********************************************** -->
         <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
-                <a href="index.php"><img class="logo" src="./USER/Images/Logo.png" alt="Logo"></a>
-                <a class="navbar-brand" href="index.php">Shoppers Bay</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class='d-flex align-items-center'>
+                    <a href="index.php"><img class="logo" src="./USER/Images/Logo.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="index.php">Shoppers Bay</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,6 +70,9 @@
                                 </li>";
                             }
                         ?>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='./ADMIN/PHP/admin_login.php'>Admin</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cart.php">
                                 <i class="fa-solid fa-cart-shopping">
@@ -82,7 +89,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">
-                                Total Price : &#8377; 
+                                Total Price : &#8377;
                                 <!-- PHP Code -->
                                 <?php
                                     // Function to get total price of items in cart from database
@@ -93,14 +100,16 @@
                         </li>
                     </ul>
 
-        <!-- ******************************************** || Search Starts Here || *********************************************** -->
+                    <!-- ******************************************** || Search Starts Here || *********************************************** -->
                     <form action="search_product.php" method="GET" class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" name="search_data" placeholder="Search Products..." aria-label="Search">
-                        <input type="submit" class="btn btn-outline-light" value="Search" name="search_data_product"></input>
+                        <input class="form-control me-2" type="search" name="search_data"
+                            placeholder="Search Products..." aria-label="Search">
+                        <input type="submit" class="btn btn-outline-light" value="Search"
+                            name="search_data_product"></input>
                     </form>
                 </div>
             </div>
-        <!-- ******************************************** || Search Ends Here || *********************************************** -->
+            <!-- ******************************************** || Search Ends Here || *********************************************** -->
         </nav>
         <!-- ******************************************** || Navbar Ends Here || *********************************************** -->
     </header>
@@ -154,25 +163,78 @@
     </section>
     <!-- ******************************************** || Welcome Ends Here || *********************************************** -->
 
-    <!-- ******************************************** || Hero Starts Here || *********************************************** -->
-    <section class="hero_container">
-        <div class="hero bg-light mt-2">
-            <h3 class="text-center fs-1">SHOPPERS BAY</h3>
-            <p class="text-center fs-5">Shopping Made Easy!</p>
+    <!-- ******************************************** || Carousel Starts Here || *********************************************** -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="./display_all_products.php"><img src="./ADMIN/Images/fasttracksmartwatch_3.jpg" style='height: 520px; width: 100%; object-fit: fill;' class="carousel-image shadow-lg" alt="carousel-image"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="./display_all_products.php"><img src="./ADMIN/Images/fortuneoil_3.jpg" style='height: 520px; width: 100%; object-fit: fill;' class="carousel-image shadow-lg" alt="carousel-image"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="./display_all_products.php"><img src="./USER/Images/oneplusnordce2_3.jpg" style='height: 520px; width: 100%; object-fit: fill;' class="carousel-image shadow-lg" alt="carousel-image"></a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-black rounded-5 p-4" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-black rounded-5 p-4" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- ******************************************** || Carousel Starts Here || *********************************************** -->
+
+     <!-- ******************************************** || Filter Starts Here || *********************************************** -->
+    <section class="hero_container mt-5">
+        <div class='d-flex column-gap-2 ms-3 my-3'>
+            <div class="dropdown-center">
+                <button class="d-flex column-gap-4 align-items-center btn btn-dark dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Brands
+                </button>
+                <ul class="dropdown-menu bg-dark  mt-1 ms-2">
+                    <!-- PHP Code -->
+                    <?php
+                        // Function to get all the brands from database and insert in the DOM. 
+                        getAllBrands();
+                    ?>
+                    <!-- PHP Code -->
+                </ul>
+            </div>
+            <div class="dropdown-center">
+                <button class="d-flex align-items-center column-gap-4 btn btn-dark dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                </button>
+                <ul class="dropdown-menu bg-dark mt-1">
+                    <!-- PHP Code -->
+                    <?php
+                        // Function to get all the categories from database and insert in the DOM. 
+                        getAllCategories();
+                    ?>
+                    <!-- PHP Code -->
+                </ul>
+            </div>
         </div>
     </section>
-    <!-- ******************************************** || Hero Ends Here || *********************************************** -->
+    <!-- ******************************************** || Filter Ends Here || *********************************************** -->
+
 
     <!-- ******************************************** || Main Starts Here || *********************************************** -->
     <main>
         <!-- ******************************************** || Product Section Starts Here || *********************************************** -->
-        <section class="product_section">
+        <section class="product_section mt-4">
             <div class="product_section_container row">
                 <!-- ******************************************** || Products Container Starts Here || *********************************************** -->
-                <div class="products_container col-md-10">
-                    <div class="products_row row mx-1">
+                <div class="products_container">
+                    <div class="products_row row mx-1 row-gap-4">
                         <!-- Product 1 -->
-                        
+
                         <!-- PHP Code -->
                         <?php
                             // Function to get all the products from database and insert in the DOM. 
@@ -188,41 +250,6 @@
                     </div>
                 </div>
                 <!-- ******************************************** || Products Container Ends Here || *********************************************** -->
-
-                <!-- ******************************************** || Filter Container Starts Here || *********************************************** -->
-                <div class="filter_container col-md-2 bg-dark p-0 pb-3 h-100">
-
-                    <!-- ******************************************** || Brands Starts Here || *********************************************** -->
-                    <ul class="brands navbar-nav me-auto text-center pb-2">
-                        <li class="nav-item bg-primary">
-                            <a class="nav-link text-light fs-4" href="#">Delivery Brands</a>
-                        </li>
-
-                        <!-- PHP Code -->
-                        <?php
-                            // Function to get all the brands from database and insert in the DOM. 
-                            getAllBrands();
-                        ?>
-                        <!-- PHP Code -->
-                    </ul>
-                    <!-- ******************************************** || Brands Ends Here || *********************************************** -->
-
-                    <!-- ******************************************** || Category Starts Here || *********************************************** -->
-                    <ul class="categories navbar-nav me-auto text-center">
-                        <li class="nav-item bg-primary">
-                            <a class="nav-link text-light fs-4" href="#">Category</a>
-                        </li>
-                        
-                        <!-- PHP Code -->
-                        <?php
-                            // Function to get all the categories from database and insert in the DOM. 
-                            getAllCategories();
-                        ?>
-                        <!-- PHP Code -->
-                    </ul>
-                    <!-- ******************************************** || Category Ends Here || *********************************************** -->
-                </div>
-                <!-- ******************************************** || Filter Container Ends Here || *********************************************** -->
             </div>
         </section>
         <!-- ******************************************** || Product Section Ends Here || *********************************************** -->

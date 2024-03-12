@@ -58,6 +58,9 @@
                                 </li>";
                             }
                         ?>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='./ADMIN/PHP/admin_login.php'>Admin</a>
+                        </li>
                     </ul>
 
         <!-- ******************************************** || Search Starts Here || *********************************************** -->
@@ -152,7 +155,7 @@
                     <!-- ******************************************** || Cart Details Ends Here || ******************************************** -->
 
                     <!-- ******************************************** || Cart Summary Starts Here || ******************************************** -->
-                    <div class="cart_summary p-4 pb-0 col-md-4 bg-dark h-25">
+                    <div class="cart_summary px-4 pb-0 col-md-4 bg-dark h-25">
                         <!-- PHP Code -->
                         <?php
                             // Function to get the Cart Summary Details from the database

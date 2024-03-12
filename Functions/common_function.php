@@ -19,9 +19,9 @@
                 $product_price = $table_row['product_price'];
 
                 echo "
-                    <div class='product_1 col-md-4 mb-4'>
+                    <div class='product_1 col-md-3 mb-4'>
                         <div class='card h-100'>
-                            <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
+                            <img src='./ADMIN/Images/$product_image' class='card-img-top my-1' alt='$product_title'>
                             <div class='card-body d-flex flex-column'> 
                                 <h5 class='card-title mt-2'>$product_title</h5>
                                 <p class='card-text mb-auto'>$product_description</p>
@@ -58,8 +58,8 @@
                 $product_price = $table_row['product_price'];
 
                 echo "
-                    <div class='product_1 col-md-4 mb-4'>
-                        <div class='card h-100'>
+                    <div class='product_1 col-md-3 mb-4'>
+                        <div class='card h-100 border-bg-dark-subtle border-3'>
                             <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
                             <div class='card-body d-flex flex-column'> 
                                 <h5 class='card-title mt-2'>$product_title</h5>
@@ -91,7 +91,7 @@
 
             // If number of rows == 0 which means there are no products available of that brand
             if($number_of_rows == 0) {
-                echo "<h2 class='products_not_available text-center text-danger'>Sorry! Products are not available.</h2>";
+                echo "<h2 class='products_not_available text-center text-danger my-5'>Sorry! Products are not available.</h2>";
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
@@ -104,7 +104,7 @@
                 $product_price = $table_row['product_price'];
 
                 echo "
-                    <div class='product_1 col-md-4 mb-4'>
+                    <div class='product_1 col-md-3 mb-4'>
                         <div class='card h-100'>
                             <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
                             <div class='card-body d-flex flex-column'> 
@@ -131,7 +131,7 @@
 
             // If number of rows == 0 which means there are no products available of that category
             if($number_of_rows == 0) {
-                echo "<h2 class='products_not_available text-center text-danger'>Sorry! Products are not available.</h2>";
+                echo "<h2 class='products_not_available text-center text-danger my-5'>Sorry! Products are not available.</h2>";
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
@@ -144,7 +144,7 @@
                 $product_price = $table_row['product_price'];
 
                 echo "
-                    <div class='product_1 col-md-4 mb-4'>
+                    <div class='product_1 col-md-3 mb-4'>
                         <div class='card h-100'>
                             <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
                             <div class='card-body d-flex flex-column'> 
@@ -186,7 +186,7 @@
             // Inserting into the DOM the brand title.
             echo "
                 <li class='nav-item'>
-                    <a class='nav-link text-light fs-5' href='index.php?brand=$brand_id'>$brand_title</a>
+                    <a class='nav-link text-light text-center py-1 fs-6' href='index.php?brand=$brand_id'>$brand_title</a>
                 </li>
             ";
         }
@@ -215,7 +215,7 @@
             // Inserting into the DOM the category title.
             echo "
                 <li class='nav-item'>
-                    <a class='nav-link text-light fs-5' href='?category=$category_id'>$category_title</a>
+                    <a class='nav-link text-light text-center py-1 fs-6' href='?category=$category_id'>$category_title</a>
                 </li>
             ";
         }
@@ -234,7 +234,7 @@
 
             // If number of rows == 0 which means there are no products available of that brand
             if($number_of_rows == 0) {
-                echo "<h2 class='products_not_available text-center text-danger'>Sorry! No Result Found.</h2>";
+                echo "<h2 class='products_not_available text-center text-danger my-5'>Sorry! No Result Found.</h2>";
             }
 
             while($table_row = mysqli_fetch_assoc($query_result)) {
@@ -247,7 +247,7 @@
                 $product_price = $table_row['product_price'];
 
                 echo "
-                    <div class='product_1 col-md-4 mb-4'>
+                    <div class='product_1 col-md-3 mb-4'>
                         <div class='card h-100'>
                             <img src='./ADMIN/Images/$product_image' class='card-img-top my-2' alt='$product_title'>
                             <div class='card-body d-flex flex-column'> 
@@ -514,7 +514,8 @@
 
         $user_id_query = "select * from `user_table` where user_ip='$ip_address'";
         $user_id_query_result = mysqli_query($con, $user_id_query);
-        $user_id = mysqli_fetch_assoc($user_id_query_result)['user_id'];
+        $row = mysqli_fetch_assoc($user_id_query_result);
+        $user_id = $row['user_id'];
 
         if(isset($_POST['update_details'])) {
             $product_quantity = $_POST['quantity'];

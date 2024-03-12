@@ -31,6 +31,10 @@
         body {
             overflow-x: hidden;
         }    
+
+        .product_section {
+            min-height: 53.1vh;
+        }
     </style>
     <!-- Internal CSS -->
 </head>
@@ -66,6 +70,9 @@
                                 </li>";
                             }
                         ?>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='./ADMIN/PHP/admin_login.php'>Admin</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cart.php">
                                 <i class="fa-solid fa-cart-shopping">
@@ -154,14 +161,41 @@
     </section>
     <!-- ******************************************** || Welcome Ends Here || *********************************************** -->
 
-    <!-- ******************************************** || Hero Starts Here || *********************************************** -->
-    <section class="hero_container">
-        <div class="hero bg-light mt-2">
-            <h3 class="text-center fs-1">SHOPPERS BAY</h3>
-            <p class="text-center fs-5">Shopping Made Easy!</p>
+<!-- ******************************************** || Filter Starts Here || *********************************************** -->
+<section class="hero_container mt-5">
+        <div class='d-flex column-gap-2 ms-3 my-3'>
+            <div class="dropdown-center">
+                <button class="d-flex column-gap-4 align-items-center btn btn-dark dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Brands
+                </button>
+                <ul class="dropdown-menu bg-dark  mt-1 ms-2">
+                    <!-- PHP Code -->
+                    <?php
+                        // Function to get all the brands from database and insert in the DOM. 
+                        getAllBrands();
+                    ?>
+                    <!-- PHP Code -->
+                </ul>
+            </div>
+            <div class="dropdown-center">
+                <button class="d-flex align-items-center column-gap-4 btn btn-dark dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                </button>
+                <ul class="dropdown-menu bg-dark mt-1">
+                    <!-- PHP Code -->
+                    <?php
+                        // Function to get all the categories from database and insert in the DOM. 
+                        getAllCategories();
+                    ?>
+                    <!-- PHP Code -->
+                </ul>
+            </div>
         </div>
     </section>
-    <!-- ******************************************** || Hero Ends Here || *********************************************** -->
+    <!-- ******************************************** || Filter Ends Here || *********************************************** -->
+
 
     <!-- ******************************************** || Main Starts Here || *********************************************** -->
     <main>
@@ -169,7 +203,7 @@
         <section class="product_section">
             <div class="product_section_container row">
                 <!-- ******************************************** || Products Container Starts Here || *********************************************** -->
-                <div class="products_container col-md-10">
+                <div class="products_container my-3">
                     <div class="products_row row mx-1">
                         <!-- Product 1 -->
                         
@@ -188,41 +222,6 @@
                     </div>
                 </div>
                 <!-- ******************************************** || Products Container Ends Here || *********************************************** -->
-
-                <!-- ******************************************** || Filter Container Starts Here || *********************************************** -->
-                <div class="filter_container col-md-2 bg-dark p-0 pb-3 h-100">
-
-                    <!-- ******************************************** || Brands Starts Here || *********************************************** -->
-                    <ul class="brands navbar-nav me-auto text-center pb-2">
-                        <li class="nav-item bg-primary">
-                            <a class="nav-link text-light fs-4" href="#">Delivery Brands</a>
-                        </li>
-
-                        <!-- PHP Code -->
-                        <?php
-                            // Function to get all the brands from database and insert in the DOM. 
-                            getAllBrands();
-                        ?>
-                        <!-- PHP Code -->
-                    </ul>
-                    <!-- ******************************************** || Brands Ends Here || *********************************************** -->
-
-                    <!-- ******************************************** || Category Starts Here || *********************************************** -->
-                    <ul class="categories navbar-nav me-auto text-center">
-                        <li class="nav-item bg-primary">
-                            <a class="nav-link text-light fs-4" href="#">Category</a>
-                        </li>
-                        
-                        <!-- PHP Code -->
-                        <?php
-                            // Function to get all the categories from database and insert in the DOM. 
-                            getAllCategories();
-                        ?>
-                        <!-- PHP Code -->
-                    </ul>
-                    <!-- ******************************************** || Category Ends Here || *********************************************** -->
-                </div>
-                <!-- ******************************************** || Filter Container Ends Here || *********************************************** -->
             </div>
         </section>
         <!-- ******************************************** || Product Section Ends Here || *********************************************** -->

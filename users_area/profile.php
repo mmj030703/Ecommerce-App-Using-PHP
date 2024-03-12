@@ -75,6 +75,9 @@
                                 </li>";
                             }
                         ?>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='../ADMIN/PHP/admin_login.php'>Admin</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../cart.php">
                                 <i class="fa-solid fa-cart-shopping">
