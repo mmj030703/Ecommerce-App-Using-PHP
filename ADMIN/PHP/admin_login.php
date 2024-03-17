@@ -48,8 +48,6 @@
                     <div>
                         <input type="submit" class="bg-primary text-white py-2 px-3 border-0" name="admin_login"
                             value="Login">
-                        <p class="small fw-bold mt-2 pt-1">Don't you have an
-                            account? <a href="admin_registration.php" class="link-danger">Registration</a></p>
                     </div>
                 </form>
             </div>
