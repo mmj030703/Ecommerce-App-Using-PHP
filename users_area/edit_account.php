@@ -8,6 +8,7 @@
         $user_email = $row_fetch['user_email'];
         $user_address = $row_fetch['user_address'];
         $user_mobile = $row_fetch['user_mobile'];
+        $imageURL = $row_fetch['user_image']; // Assuming you have an 'user_image' column in your database
     } 
 
     if(isset($_POST['user_update'])) {
@@ -16,14 +17,26 @@
         $user_email = $_POST['user_email'];    
         $user_address = $_POST['user_address'];    
         $user_mobile = $_POST['user_mobile'];    
-        $user_image = $_FILES['user_image']['name'];
-        $user_image_tmp = $_FILES['user_image']['tmp_name'];
-        move_uploaded_file($user_image_tmp, "./user_images/$user_image");
-    
-        // update query
-        $update_data = "update `user_table` set username='$username', user_email='$user_email',
-        user_image='$user_image', user_address='$user_address', user_mobile='$user_mobile' where
-        user_id=$update_id";
+
+        // Check if a new image is selected
+        if(!empty($_FILES['user_image']['name'])) {
+            $user_image = $_FILES['user_image']['name'];
+            $user_image_tmp = $_FILES['user_image']['tmp_name'];
+            move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+            // Update user_image in the database
+        }
+
+        // Update query
+        $update_data = "UPDATE user_table SET username='$username', user_email='$user_email',
+                        user_address='$user_address', user_mobile='$user_mobile'";
+        
+        // Add user_image to the update query if it's set
+        if(isset($user_image)) {
+            $update_data .= ", user_image='$user_image'";
+        }
+
+        $update_data .= " WHERE user_id=$update_id";
+
         $result_query = mysqli_query($con, $update_data);
 
         if($result_query) {
